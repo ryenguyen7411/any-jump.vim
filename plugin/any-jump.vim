@@ -387,6 +387,10 @@ fu! s:Jump(...) abort range
   let t:any_jump = ib
 
   call s:CreateUi(ib)
+
+  if len(ib.definitions_grep_results) == 1
+    call g:AnyJumpHandleOpen('tab')
+  endif
 endfu
 
 fu! s:JumpBack() abort
@@ -841,7 +845,7 @@ if s:nvim
   augroup anyjump
     au!
     au FileType any-jump nnoremap <buffer> o :call g:AnyJumpHandleOpen()<cr>
-    au FileType any-jump nnoremap <buffer><CR> :call g:AnyJumpHandleOpen()<cr>
+    au FileType any-jump nnoremap <buffer><CR> :call g:AnyJumpHandleOpen('tab')<cr>
     au FileType any-jump nnoremap <buffer> t :call g:AnyJumpHandleOpen('tab')<cr>
     au FileType any-jump nnoremap <buffer> s :call g:AnyJumpHandleOpen('split')<cr>
     au FileType any-jump nnoremap <buffer> v :call g:AnyJumpHandleOpen('vsplit')<cr>
