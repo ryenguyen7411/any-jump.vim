@@ -211,6 +211,7 @@ fu! s:CreateNvimUi(internal_buffer) abort
         \ 'width': width,
         \ 'height': height,
         \ 'style': 'minimal',
+        \ 'border': 'single',
         \ }
 
   let winid = nvim_open_win(buf, v:true, opts)
@@ -389,7 +390,7 @@ fu! s:Jump(...) abort range
   call s:CreateUi(ib)
 
   if len(ib.definitions_grep_results) == 1
-    call g:AnyJumpHandleOpen('tab')
+    call g:AnyJumpHandleOpen()
   endif
 endfu
 
@@ -845,7 +846,7 @@ if s:nvim
   augroup anyjump
     au!
     au FileType any-jump nnoremap <buffer> o :call g:AnyJumpHandleOpen()<cr>
-    au FileType any-jump nnoremap <buffer><CR> :call g:AnyJumpHandleOpen('tab')<cr>
+    au FileType any-jump nnoremap <buffer><CR> :call g:AnyJumpHandleOpen()<cr>
     au FileType any-jump nnoremap <buffer> t :call g:AnyJumpHandleOpen('tab')<cr>
     au FileType any-jump nnoremap <buffer> s :call g:AnyJumpHandleOpen('split')<cr>
     au FileType any-jump nnoremap <buffer> v :call g:AnyJumpHandleOpen('vsplit')<cr>
