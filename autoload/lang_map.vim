@@ -6,6 +6,7 @@ let s:definitions = {}
 " map any-language to concrete internal s:definitions[language]
 let s:filetypes_proxy = {
       \"javascriptreact": "javascript",
+      \"typescriptreact": "typescript",
       \"c": "cpp",
       \}
 
